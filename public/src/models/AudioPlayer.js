@@ -1,10 +1,10 @@
-class AudioPlayer {
+export class AudioPlayer {
 
     constructor(params) {
         this.songs = [];
         this.queue = [];
         this.player = new Audio();
-        const src = "songs/Emarosa_Sure.mp3";
+        const src = params?.src || "songs/Emarosa_Sure.mp3";
 
         this._gui = {
             progressBar: { value: undefined, DOMElement: undefined },
@@ -81,7 +81,7 @@ class AudioPlayer {
     }
 
     _addClickEvent(element, callback) {
-        console.log("DEBUG", element, callback)
+        // console.log("DEBUG", element, callback)
         if (element instanceof HTMLElement) {
             element.onclick = callback;
         } else {
@@ -128,6 +128,10 @@ class AudioPlayer {
         }
     }
 
+    _updateCover(value) {
+        this.gui.albumCover.DOMElement.style.backgroundImage = `url("${value}")`;
+    }
+
     _updateTextGUIElement(el) {
         if (el.DOMElement instanceof HTMLElement) {
             el.DOMElement.innerHTML = el.value;
@@ -154,6 +158,7 @@ class AudioPlayer {
         this._updateGUIElement(this.gui.currentTime);
         this._updateTextGUIElement(this.gui.songName);
         this._updateTextGUIElement(this.gui.artistName);
+        this._updateCover(this.gui.albumCover.value);
     }
 
     get gui() {

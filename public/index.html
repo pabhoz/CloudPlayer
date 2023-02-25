@@ -7,11 +7,8 @@
   <title>Cloud Player</title>
   <link rel="stylesheet" href="vendors/fontawesome-free-6.3.0-web/css/all.min.css">
   <link rel="stylesheet" href="css/main.css">
-  <script src="src/models/Song.js"></script>
-  <script src="src/models/AudioPlayer.js"></script>
-  <script src="src/app.js"></script>
 </head>
-<body onload="start()">
+<body>
     <div id="player">
       <div class="controls">
         <div class="bar">
@@ -47,5 +44,9 @@
         </div>
       </div>
     </div>
+    <script>
+      window.page = 'index';
+    </script>
+    <script src="dist/bundle.js"></script>
 </body>
 </html>
